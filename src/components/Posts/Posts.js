@@ -5,6 +5,12 @@ import { NavLink } from 'react-router-dom';
 function Posts() {
   const [data, setData] = useState([]);
 
+  const style = {
+    link: {
+      textDecoration: 'none',
+    },
+  };
+
   useEffect(() => {
     axios.get('https://jsonplaceholder.typicode.com/posts').then((res) => {
       console.log(res.data.slice(0, 10));
@@ -20,7 +26,11 @@ function Posts() {
         return (
           <div className="post-container">
             <h3> {data.title} </h3>
-            <NavLink className="button" to={`/posts/${data.id}`}>
+            <NavLink
+              className="button"
+              style={style.link}
+              to={`/posts/${data.id}`}
+            >
               {' '}
               Read More{' '}
             </NavLink>
